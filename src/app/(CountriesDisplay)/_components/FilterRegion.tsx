@@ -2,7 +2,11 @@
 
 import { useEffect, useRef, useState, MouseEventHandler } from "react";
 
-const FilterRegion = () => {
+interface ChildComponentProps {
+    onFilterClicked: (msg: string) => void;
+  }
+
+const FilterRegion = ({ onFilterClicked }: ChildComponentProps) => {
     const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
 
@@ -13,7 +17,7 @@ const FilterRegion = () => {
   const handleClickedRegion: MouseEventHandler<HTMLDivElement> = (event) => {
     const target = event.target as HTMLDivElement;
     const innerHtml = target.innerHTML;
-    console.log('Div clicked!', innerHtml);
+    onFilterClicked(innerHtml);
   }
 
   // Close the dropdown when clicking outside of it

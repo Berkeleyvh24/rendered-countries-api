@@ -11,6 +11,7 @@ interface CountriesPageProps{
   }
 
 const CardsDisplay = ({countries}: CountriesPageProps) => {
+    console.log(countries,'++++++++++')
   // Load the data from the imported JSON file    
     return ( 
         <div className="container mx-auto p-4">
