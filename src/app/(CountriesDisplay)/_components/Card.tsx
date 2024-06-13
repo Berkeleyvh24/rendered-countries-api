@@ -1,13 +1,22 @@
+"use client"
+
 import { Country } from "@/types/types";
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { MouseEventHandler } from "react";
 
 
 interface CardProps {
     country: Country
 }
 
-const Card = ({country}: CardProps) => {
-    return (  <div className="bg-white rounded-lg shadow-md overflow-hidden">
+const Card :React.FC<CardProps> = ({country}) => {
+    const router = useRouter();
+    
+    return ( 
+        <Link href={`/country/${country.name.common}`}>
+        <div className="bg-white rounded-lg shadow-md overflow-hidden cursor-pointer">
     <div className="relative w-full h-32">
       <Image src={country.flags.svg} alt={`${country.name} flag`} layout="fill" />
     </div>
@@ -17,7 +26,9 @@ const Card = ({country}: CardProps) => {
       <p className='text-sm'><span className="font-medium">Region:</span> {country.region}</p>
       <p className='text-sm'><span className="font-medium">Capital:</span> {country.capital}</p>
     </div>
-  </div> );
+  </div> 
+        </Link>
+         );
 }
  
 export default Card;

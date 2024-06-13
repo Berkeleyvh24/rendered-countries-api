@@ -8,22 +8,10 @@ import { useEffect, useState } from "react";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import { Country } from "@/types/types";
 
-
-
 export default function Home() {
   const [countries, setCountries] = useState<Country[]>([])
   const [searchValue, setSearchValue] = useState('');
   const [wholeRegion, setWholeRegion] = useState<string>('');
-
-  // user searches in the input
-  // pass the input data into the get request
-  // countries are now displayed 
-  // region is now clicked on 
-  // setWholeRegion to the region clicked on
-  // useEffect dependency array contains wholeRegion
-  // useEffect is called
-  // set an if statement that checks whether wholeRegion is empty
-  // if not then continue with the normal search
 
   const handleReceiveMessage = async (region: string) => {
     fetchRegionData(region)
