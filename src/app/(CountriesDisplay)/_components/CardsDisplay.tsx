@@ -14,11 +14,15 @@ const CardsDisplay = ({countries}: CountriesPageProps) => {
   // Load the data from the imported JSON file    
     return ( 
         <div className="container mx-auto p-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-16">
-          {countries.map((country) => (
-            <Card key={country.name.common} country={country} />
-          ))}
-        </div>
+        {Array.isArray(countries) && countries.length > 0 ? (
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-16">
+      {countries.map((country) => (
+        <Card key={country.name.common} country={country} />
+      ))}
+    </div>
+  ) : (
+    <div>No countries available</div>
+  )}
       </div>
     )}
  

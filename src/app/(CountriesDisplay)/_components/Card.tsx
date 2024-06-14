@@ -12,7 +12,6 @@ interface CardProps {
 }
 
 const Card :React.FC<CardProps> = ({country}) => {
-    const router = useRouter();
     
     return ( 
         <Link href={`/country/${country.name.common}`}>
